@@ -2,8 +2,9 @@ import React, {useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
 import {Button} from "@material-ui/core";
+import {v4 as UuidV4} from "uuid";
 import "./EnterEmail.css";
-import {setOpen, setClose, getInfo} from "./features/counterSlice";
+import {setClose, getInfo} from "./features/counterSlice";
 function EnterEmail() {
     const dispatch = useDispatch()
     const [name, setName] = useState("");
@@ -30,7 +31,7 @@ function EnterEmail() {
 
     
     const sendDetails = {
-        id:Math.floor(Math.random() * 10),
+        id:UuidV4(),
         name,
         subject,
         message,
@@ -54,7 +55,7 @@ function EnterEmail() {
             <form onSubmit= {handleSubmit}>
                 <input type="text" placeholder="To" value={name} onChange={(e)=>setName(e.target.value)}/>
                 <input type="text" placeholder="Subject" value={subject} onChange = {(e)=> setSubject(e.target.value)} />
-                <input type="text" className="sendEmail_message" placeholder="Body" value={message} onChange={(e)=> setMessage(e.target.value)} />
+                <input type="email" className="sendEmail_message" placeholder="Body" value={message} onChange={(e)=> setMessage(e.target.value)} />
             <div className="sendEmail_options">
                 <Button type="submit" className="sendEmail_send">Send</Button>
             </div>

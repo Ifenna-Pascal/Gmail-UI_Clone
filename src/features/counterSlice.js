@@ -18,10 +18,14 @@ export const counterSlice = createSlice({
       state.data = [...state.data, action.payload];   
     },
     getInfoById:(state,action)=>{
-        state.specific = state.data.filter((index)=>{
-          return action.payload === index.toString()
-        })
-        console.log(state.specific);
+      const id = action.payload;
+      console.log(id);
+      const data = state.data.filter((ele)=>
+      // console.log(ele),
+        ele.id === id
+      );
+      console.log(data);
+    
     }
     
   },

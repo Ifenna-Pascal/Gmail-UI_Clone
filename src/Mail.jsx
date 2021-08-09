@@ -7,12 +7,12 @@ import { ArrowBack, MoveToInbox, Error, Delete, Email, WatchLater, CheckCircle, 
 
  function Mail({history}) {
      const dispatch = useDispatch();
-     const data = useSelector(state=> (state.toggle));
+     const {data} = useSelector(state=> (state.toggle));
      console.log(data);
     const params = history.location.pathname.split("/")[2];
-    useEffect(()=>{
-        dispatch(getInfoById(params))
-    }, [])
+     const founds = data.filter(ele=>ele.id == params);
+     const found = founds[0]
+     console.log(found[0], "found");
      return (
          <div className="mail">
             <div className="mailtools">
@@ -59,13 +59,13 @@ import { ArrowBack, MoveToInbox, Error, Delete, Email, WatchLater, CheckCircle, 
             </div>
             <div className="mail_body">
                 <div className="mailbody_header">
-                    <h2>Subject</h2>
+                    <h2>{found.subject}</h2>
                     <LabelImportant className="important"/>
-                    <p>Title</p>
-                    <p className="time">10pm</p>
+                    <p>{found.name}</p>
+                    <p className="time">{found.time}</p>
                 </div>
                 <div className="mail_message">
-                    This is a message
+                    {found.message}
                 </div>
             </div>
          </div>

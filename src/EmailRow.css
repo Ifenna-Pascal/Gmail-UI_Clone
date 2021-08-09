@@ -38,10 +38,9 @@
     font-weight: bold;
 }
 
-.time{
-    padding-right: 15px;
-    font-size: 11px;
-    font-weight: bold;
+.times{
+    color:gray;
+    font-weight: 200;
 }
 
 .description{
