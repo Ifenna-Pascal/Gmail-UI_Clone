@@ -19,7 +19,7 @@ function App() {
       <Sidebar/>
       
       <Switch>
-        <Route path="/mail"  component={Mail}/>
+        <Route path="/mail/:id"  component={Mail}/>
           
 
         <Route path="/" component={EmailList}/>

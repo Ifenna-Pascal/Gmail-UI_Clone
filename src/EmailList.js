@@ -12,11 +12,19 @@ import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import Section from "./Section"
 import EmailRow from './EmailRow';
 import EnterEmail from "./EnterEmail"
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useSelector } from 'react-redux';
 import "./EmailList.css";
 // import { ArrowDropDownCircleRounded } from '@material-ui/icons';
 
 function EmailList() {
+    const data = useSelector(state=> (state.toggle))
+    console.log(data);
+    useEffect(()=>{
+        
+
+    },[])
+
     return (
         <div className="emailList">
             <div className="emailListSettings">
@@ -54,11 +62,12 @@ function EmailList() {
                 <Section Icon={LocalOfferIcon} title="promotion" color="green" />
             </div>
             <div className="emailList_List">
-                <EmailRow title="Tswitch" time="10pm" subject="What's In Next Guys" description="Hey guys just started building cool stuffs"/>
-                <EmailRow title="Tswitch" time="10pm" subject="What's In Next Guys" description="Hey guys just started building cool stuffs"/>
-                <EmailRow title="Tswitch" time="10pm" subject="What's In Next Guys" description="Hey guys just started building cool stuffs"/>
-                <EmailRow title="Tswitch" time="10pm" subject="What's In Next Guys" description="Hey guys just started building cool stuffs"/>
-                <EmailRow title="Tswitch" time="10pm" subject="What's In Next Guys" description="Hey guys just started building cool stuffs"/>
+                {
+                  data && data.data.map((value)=>(
+                      console.log(value),
+                    <EmailRow key={value.id} id={value.id} title={value.name} time={value.time} subject={value.subject} description={value.message}/>
+                  ))  
+                }
             </div>
             <EnterEmail/>
         </div>

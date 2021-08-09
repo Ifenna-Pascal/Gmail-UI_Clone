@@ -9,7 +9,7 @@ function EmailRow({id, subject, title, description, time}) {
     return (
         <div className="emailRow">
             <div className="emailRowOptions">
-                <Checkbox onClick= {()=>history.push("/mail")}/>
+                <Checkbox onClick= {()=>history.push(`/mail/${id}`)}/>
                 <IconButton>
                     <StarBorderOutlined/>
                 </IconButton>

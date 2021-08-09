@@ -1,11 +1,18 @@
- import React from 'react';
+ import React, { useEffect } from 'react';
+ import {getInfoById} from "./features/counterSlice";
  import "./Mail.css";
- import { useHistory } from 'react-router';
+ import { useDispatch, useSelector } from 'react-redux';
  import {IconButton} from "@material-ui/core";
 import { ArrowBack, MoveToInbox, Error, Delete, Email, WatchLater, CheckCircle, LabelImportant, MoreVert, UnfoldMore, Print, ExitToApp } from '@material-ui/icons';
 
- function Mail() {
-     const history = useHistory()
+ function Mail({history}) {
+     const dispatch = useDispatch();
+     const data = useSelector(state=> (state.toggle));
+     console.log(data);
+    const params = history.location.pathname.split("/")[2];
+    useEffect(()=>{
+        dispatch(getInfoById(params))
+    }, [])
      return (
          <div className="mail">
             <div className="mailtools">

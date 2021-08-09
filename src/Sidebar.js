@@ -1,5 +1,5 @@
 import { Button, IconButton } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./Sidebar.css";
 import SidebarOption from "./SidebarOptions";
 import InboxIcon from "@material-ui/icons/Inbox";
@@ -17,7 +17,6 @@ import {useSelector, useDispatch} from "react-redux";
 import {setOpen} from "./features/counterSlice"
 function Sidebar() {
     const dispatch = useDispatch();
-   
     const Toggle = ()=>{
         dispatch(setOpen())
     }
